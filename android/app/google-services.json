@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "513063755733",
+    "firebase_url": "https://kiosk-7865c.firebaseio.com",
+    "project_id": "kiosk-7865c",
+    "storage_bucket": "kiosk-7865c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513063755733:android:ad73c115eca1da107d275c",
+        "android_client_info": {
+          "package_name": "com.example.kiosk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513063755733-pu631md4ns7ofiiuanh90pgstv73i3uk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWBacjrDuVuNYuXJIqKYl_kmRf1-9o1X0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513063755733-pu631md4ns7ofiiuanh90pgstv73i3uk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
