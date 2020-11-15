@@ -1,45 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk/widgets/login_widgets/inputfield.dart';
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0XFFFFFFFF),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(
-              child: CircleAvatar(
-                child: Text("Logo"),
-                radius: 60,
-              ),
+            InputField(
+              hint: "Email/Phone Number",
+              keyboard: TextInputType.emailAddress,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Email/Phone Number",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  suffixIcon: Icon(
-                    Icons.visibility,
-                  ),
-                ),
-                obscureText: true,
-              ),
+            InputField(
+              hint: "Password",
+              iconVisible: true,
             ),
             GestureDetector(
               onTap: () => print("Log in button pressed"),
@@ -66,17 +43,22 @@ class Login extends StatelessWidget {
                   "New User?",
                   style: TextStyle(color: Colors.grey, fontSize: 20),
                 ),
-                Text(
-                  " Sign Up",
-                  style: TextStyle(
-                      color: Colors.teal,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => print("Navigate to sign up screen"),
+                  child: Text(
+                    " Sign Up",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             ),
+            SizedBox(height: 110),
           ],
         ),
+        resizeToAvoidBottomPadding: false,
       ),
     );
   }
