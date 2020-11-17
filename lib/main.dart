@@ -10,7 +10,6 @@ void main() {
   runApp(MyApp());
 }
 
-//TODO: Design the login screen
 //TODO: Design the registration screen
 //TODO: Create a new firebase project with your account
 //TODO: Design a splash screen

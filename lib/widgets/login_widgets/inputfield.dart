@@ -20,13 +20,11 @@ class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       child: TextField(
+        obscuringCharacter: "*",
         decoration: InputDecoration(
           hintText: widget.hint,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
           suffixIcon: widget.iconVisible
               ? GestureDetector(
                   onTap: () {
@@ -44,6 +42,7 @@ class _InputFieldState extends State<InputField> {
                         )
                       : Icon(
                           Icons.visibility_sharp,
+                          color: Colors.teal,
                         ),
                 )
               : null,
