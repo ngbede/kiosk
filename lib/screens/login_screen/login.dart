@@ -39,10 +39,10 @@ class Login extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 10),
                             child: Text(
-                              "LOG IN",
+                              "Login",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                fontSize: 15,
                               ),
                             ),
                           ),

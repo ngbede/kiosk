@@ -1,14 +1,14 @@
 // User account data model for login and registration
 class User {
-  String firstName;
-  String lastName;
+  String name;
+  String surName;
   String email;
   String phoneNumber;
   String password;
 
   User({
-    this.firstName,
-    this.lastName,
+    this.name,
+    this.surName,
     this.email,
     this.phoneNumber,
     this.password,

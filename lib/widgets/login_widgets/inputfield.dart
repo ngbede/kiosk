@@ -4,8 +4,12 @@ class InputField extends StatefulWidget {
   final String hint;
   final TextInputType keyboard;
   final bool iconVisible;
+  final double horLen;
+  final double verLen;
   InputField({
     @required this.hint,
+    this.horLen = 20.0,
+    this.verLen = 10.0,
     this.iconVisible = false,
     this.keyboard = TextInputType.text,
   });
@@ -20,7 +24,10 @@ class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.horLen,
+        vertical: widget.verLen,
+      ),
       child: TextField(
         obscuringCharacter: "*",
         decoration: InputDecoration(
