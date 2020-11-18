@@ -12,10 +12,10 @@ Technologies Used:
 - Dart
 
 Features:
-- [] Sign up.
-- [] Log in.
-- [] Business Enrolment
-- [] Product Inventory
-- [] Expiery date alert notification
+- [ ] Sign up workflow.
+- [ ] Log in workflow.
+- [ ] Business Enrolment
+- [ ] Product Inventory
+- [ ] Expiery date alert notification
 ## Getting Started
 
