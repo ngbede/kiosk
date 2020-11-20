@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk/config/constant.dart';
+import 'package:kiosk/screens/layout.dart';
 import 'package:kiosk/widgets/login_widgets/inputfield.dart';
 
 class Register extends StatelessWidget {
@@ -22,12 +24,14 @@ class Register extends StatelessWidget {
                       Expanded(
                         child: InputField(
                           hint: "Name",
+                          dataField: Field.name,
                           horLen: 10,
                         ),
                       ),
                       Expanded(
                         child: InputField(
                           hint: "Surname",
+                          dataField: Field.surName,
                           horLen: 10,
                         ),
                       )
@@ -35,26 +39,34 @@ class Register extends StatelessWidget {
                   ),
                   InputField(
                     hint: "Email",
+                    dataField: Field.email,
                     horLen: 10,
                     keyboard: TextInputType.emailAddress,
                   ),
                   InputField(
                     hint: "Phone Number",
+                    dataField: Field.phone,
                     horLen: 10,
                     keyboard: TextInputType.phone,
                   ),
                   InputField(
                     hint: "Password",
+                    dataField: Field.password,
                     horLen: 10,
                     iconVisible: true,
                   ),
                   InputField(
                     hint: "Confirm Password",
+                    dataField: Field.password,
                     horLen: 10,
                     iconVisible: true,
                   ),
                   GestureDetector(
-                    onTap: () => print("Log in button pressed"),
+                    onTap: () {
+                      print("Log in button pressed");
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Layout()));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0XFF35D4C0),

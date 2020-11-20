@@ -5,16 +5,6 @@ import 'package:kiosk/models/account/user.dart';
 class Account with ChangeNotifier {
   User _user = User();
 
-  // void register(String name, String email, String surName, String contact,
-  //     String password, String confirmPassword) {
-  //   user.name = name;
-  //   user.email = email;
-  //   user.phoneNumber = contact;
-  //   user.surName = surName;
-  //   if (password == confirmPassword) {
-  //     user.password = password;
-  //   }
-  // }
   void setName(String name) {
     _user.name = name;
     notifyListeners();

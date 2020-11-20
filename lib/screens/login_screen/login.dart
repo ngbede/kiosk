@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk/config/constant.dart';
 import 'package:kiosk/widgets/login_widgets/inputfield.dart';
 
 class Login extends StatelessWidget {
@@ -21,9 +22,11 @@ class Login extends StatelessWidget {
                       InputField(
                         hint: "Phone or Email",
                         keyboard: TextInputType.emailAddress,
+                        dataField: Field.email,
                       ),
                       InputField(
                         hint: "Password",
+                        dataField: Field.password,
                         iconVisible: true,
                       ),
                       GestureDetector(
