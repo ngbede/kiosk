@@ -58,8 +58,8 @@ class _InputFieldState extends State<InputField> {
             Provider.of<Account>(context, listen: false).setContact(value);
           } else if (widget.dataField == Field.surName) {
             Provider.of<Account>(context, listen: false).setSurname(value);
-          } else {
-            print("fix password");
+          } else if (widget.dataField == Field.password) {
+            Provider.of<Account>(context, listen: false).setPassword(value);
           }
         },
         decoration: InputDecoration(

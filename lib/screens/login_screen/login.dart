@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kiosk/config/constant.dart';
 import 'package:kiosk/widgets/login_widgets/inputfield.dart';
 
+//TODO:implement sign in method with firebase
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class Login extends StatelessWidget {
                   child: Column(
                     children: [
                       InputField(
-                        hint: "Phone or Email",
+                        hint: "E-mail",
                         keyboard: TextInputType.emailAddress,
                         dataField: Field.email,
                       ),

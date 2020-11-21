@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk/providers/spin/progress.dart';
 import 'package:kiosk/screens/login_screen/login.dart';
 import 'package:kiosk/screens/signup_screen/register.dart';
 import 'package:provider/provider.dart';
 import 'package:kiosk/providers/onboard/account.dart';
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   //async
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Account>(
           create: (context) => Account(),
+        ),
+        ChangeNotifierProvider<Spin>(
+          create: (context) => Spin(),
         ),
       ],
       child: MaterialApp(

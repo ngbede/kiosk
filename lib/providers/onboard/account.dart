@@ -15,8 +15,8 @@ class Account with ChangeNotifier {
     notifyListeners();
   }
 
-  void setPassword(String password, String confirmPword) {
-    _user.password = password == confirmPword ? password : null;
+  void setPassword(String password) {
+    _user.password = password; // == confirmPword ? password : null;
     notifyListeners();
   }
 
@@ -28,6 +28,18 @@ class Account with ChangeNotifier {
   void setSurname(String surName) {
     _user.surName = surName;
     notifyListeners();
+  }
+
+  bool fieldsNotNull() {
+    bool notNull = false;
+    if (_user.email != null &&
+        _user.name != null &&
+        _user.surName != null &&
+        _user.password != null &&
+        _user.phoneNumber != null) {
+      notNull = true;
+    }
+    return notNull;
   }
 
   User getUser() => _user;
