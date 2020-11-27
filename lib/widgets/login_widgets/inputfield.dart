@@ -85,6 +85,11 @@ class _InputFieldState extends State<InputField> {
                         ),
                 )
               : null,
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0XFF35D4C0),
+            ),
+          ),
         ),
         keyboardType: widget.keyboard,
         obscureText: widget.iconVisible ? hidePassword : false,

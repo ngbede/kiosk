@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiosk/config/constant.dart';
+import 'package:kiosk/config/instance.dart';
 import 'package:kiosk/providers/onboard/account.dart';
 import 'package:kiosk/providers/spin/progress.dart';
 import 'package:kiosk/screens/layout.dart';
@@ -9,11 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 //TODO:handle email/account already in use exception
-//TODO:check if passwords match
-//TODO:Refactor sign in method
-
 class Register extends StatelessWidget {
-  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,33 +20,35 @@ class Register extends StatelessWidget {
           inAsyncCall: Provider.of<Spin>(context).getWheel(),
           child: Padding(
             padding:
-                EdgeInsets.only(left: 20.0, right: 20.0, bottom: 180, top: 30),
+                EdgeInsets.only(left: 15.0, right: 15.0, bottom: 120, top: 30),
             child: Card(
               elevation: 20,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: InputField(
-                            hint: "Name",
-                            dataField: Field.name,
-                            horLen: 10,
-                          ),
-                        ),
-                        Expanded(
-                          child: InputField(
-                            hint: "Surname",
-                            dataField: Field.surName,
-                            horLen: 10,
-                          ),
-                        )
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        "Create Account",
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ),
+                    Divider(),
+                    InputField(
+                      hint: "First Name",
+                      dataField: Field.name,
+                      horLen: 10,
                     ),
                     InputField(
-                      hint: "Email",
+                      hint: "Last Name",
+                      dataField: Field.surName,
+                      horLen: 10,
+                    ),
+                    InputField(
+                      hint: "Email Address",
                       dataField: Field.email,
                       horLen: 10,
                       keyboard: TextInputType.emailAddress,
@@ -67,11 +65,13 @@ class Register extends StatelessWidget {
                       horLen: 10,
                       iconVisible: true,
                     ),
-                    InputField(
-                      hint: "Confirm Password",
-                      dataField: Field.password,
-                      horLen: 10,
-                      iconVisible: true,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        "Passwords must be at least 6 characters.",
+                        style: TextStyle(fontSize: 10),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
                     GestureDetector(
                       onTap: () async {
@@ -81,8 +81,8 @@ class Register extends StatelessWidget {
                           Provider.of<Spin>(context, listen: false)
                               .changeWheel();
                           try {
-                            final _newUser =
-                                await _auth.createUserWithEmailAndPassword(
+                            final _newUser = await auth()
+                                .createUserWithEmailAndPassword(
                                     email: Provider.of<Account>(context,
                                             listen: false)
                                         .getUser()
@@ -91,6 +91,28 @@ class Register extends StatelessWidget {
                                             listen: false)
                                         .getUser()
                                         .password);
+                            //For every new user store their additional info in cloud firestore
+                            store().collection("users").add(
+                              {
+                                "email":
+                                    Provider.of<Account>(context, listen: false)
+                                        .getUser()
+                                        .email,
+                                "id": _newUser.user.uid,
+                                "name":
+                                    Provider.of<Account>(context, listen: false)
+                                        .getUser()
+                                        .name,
+                                "surname":
+                                    Provider.of<Account>(context, listen: false)
+                                        .getUser()
+                                        .surName,
+                                "phoneNumber":
+                                    Provider.of<Account>(context, listen: false)
+                                        .getUser()
+                                        .phoneNumber
+                              },
+                            );
                             if (_newUser != null) {
                               Provider.of<Spin>(context, listen: false)
                                   .changeWheel();
@@ -110,12 +132,13 @@ class Register extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         margin:
-                            EdgeInsets.symmetric(horizontal: 70, vertical: 15),
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 50, vertical: 10),
                           child: Text(
-                            "Sign Up",
+                            "Create Account",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
@@ -124,6 +147,11 @@ class Register extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Text(
+                      "By signing up you accept our terms and conditions & privacy policy",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Color(0XFFCDD8EA)),
+                    )
                   ],
                 ),
               ),
